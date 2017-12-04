@@ -1,28 +1,17 @@
 @_exported import Vapor
 import HTTP
-import MongoKitten
-import Cheetah
-import BSON
 
 extension Droplet {
     
-    internal var collection: MongoKitten.Collection {
-        get {
-            return self.collection
-        }
-        set {
-            self.collection = newValue
-        }
-    }
-    
     public func setup() throws {
-        try setupDatabase()
+        //try setupDatabase()
         try setupRoutes()
         // Do any additional droplet setup
     }
     
     private func setupDatabase() throws {
-        let server = try Server("mongodb://msgadm:$msgadm_39@cluster0-shard-00-00-4dv29.mongodb.net:27017,cluster0-shard-00-01-4dv29.mongodb.net:27017,cluster0-shard-00-02-4dv29.mongodb.net:27017/posts?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin")
+       /* let server = try MongoKitten.Server("mongodb://msgadm:$msgadm_39@cluster0-shard-00-00-4dv29.mongodb.net:27017,cluster0-shard-00-01-4dv29.mongodb.net:27017,cluster0-shard-00-02-4dv29.mongodb.net:27017/posts?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin")
+        
         let database = server["posts"]
         let ctn = database["post"]
         
@@ -34,17 +23,16 @@ extension Droplet {
         
         get("posts") { req in
             return Document(array: Array(try ctn.find()))
-        }
-        
-        // self.collection = ctn
+        } */
     }
 }
 
+/*
 extension Document : ResponseRepresentable {
     public func makeResponse() throws -> Response {
         return Response(status: .ok, headers: [
             "Content-Type": "application/json; charset=utf-8"
-            ], body: Body(self.convert(toObject: JSONData.self).serialize()))
+            ], body: Body(self.makeExtendedJSON().serialize()))
     }
 }
 
@@ -60,4 +48,4 @@ extension Request {
             return nil
         }
     }
-}
+}*/

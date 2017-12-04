@@ -42,20 +42,6 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "Meow::Meow"
-               BuildableName = "Meow.framework"
-               BlueprintName = "Meow"
-               ReferencedContainer = "container:Backend.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "MongoProvider::MongoProvider"
                BuildableName = "MongoProvider.framework"
                BlueprintName = "MongoProvider"

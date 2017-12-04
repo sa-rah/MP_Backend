@@ -137,15 +137,6 @@
         }
       },
       {
-        "package": "Meow",
-        "repositoryURL": "https://github.com/OpenKitten/Meow.git",
-        "state": {
-          "branch": null,
-          "revision": "9185da381f0ee732aa7240cb3581144b4686b133",
-          "version": "0.2.0"
-        }
-      },
-      {
         "package": "MongoDriver",
         "repositoryURL": "https://github.com/vapor/mongo-driver.git",
         "state": {

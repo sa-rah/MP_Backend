@@ -1,8 +1,4 @@
 import Vapor
-import HTTP
-import MongoKitten
-import Cheetah
-import BSON
 
 extension Droplet {
     func setupRoutes() throws {
@@ -22,7 +18,6 @@ extension Droplet {
 
         get("description") { req in return req.description }
         
-        //try resource("posts", PostController.self)
-        
+        resource("posts", PostController())
     }
 }

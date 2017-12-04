@@ -4,6 +4,7 @@
     "//": "sqlite: Persisted SQLite DB (configure with sqlite.json)",
     "//": "Other drivers are available through Vapor providers",
     "//": "https://github.com/search?q=topic:vapor-provider+topic:database",
+    "idType": "uuid",
     "driver": "mongo",
     
     "//": "Naming convention to use for creating foreign id keys,",
@@ -13,7 +14,7 @@
     
     "//": "Name of the table Fluent uses to track migrations.",
     "//": "If null, preparations will not be run.",
-    "migrationEntityName": "fluent",
+    "migrationEntityName": "posts",
     
     "//": "Character used to join pivot tables, e.g., `user_pet`",
     "pivotNameConnector": "_",
@@ -30,5 +31,5 @@
     "defaultPageSize": 10,
 
     "//": "If true, all queries made to the database will be logged.",
-    "log": false
+    "log": true
 }
