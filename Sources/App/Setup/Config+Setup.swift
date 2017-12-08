@@ -1,3 +1,4 @@
+import FluentProvider
 import MongoProvider
 //import MongoKittenProvider
 
@@ -13,7 +14,8 @@ extension Config {
     
     /// Configure providers
     private func setupProviders() throws {
-       try addProvider(MongoProvider.Provider.self)
+        try addProvider(FluentProvider.Provider.self)
+        try addProvider(MongoProvider.Provider.self)
        // try addProvider(MongoKittenProvider.Provider.self)
     }
     

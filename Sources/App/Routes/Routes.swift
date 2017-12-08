@@ -18,6 +18,13 @@ extension Droplet {
 
         get("description") { req in return req.description }
         
-        resource("posts", PostController())
+        let postController = PostController()
+        postController.addRoutes(to: self)
+        
+        let userController = UserController()
+        userController.addRoutes(to: self)
+        /*
+        let postController = PostController()
+        resource("posts", postController)*/
     }
 }

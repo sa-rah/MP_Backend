@@ -70,20 +70,6 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FluentProvider::FluentProvider"
-               BuildableName = "FluentProvider.framework"
-               BlueprintName = "FluentProvider"
-               ReferencedContainer = "container:Backend.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "MongoDriver::MongoDriver"
                BuildableName = "MongoDriver.framework"
                BlueprintName = "MongoDriver"
@@ -213,6 +199,20 @@
                BlueprintIdentifier = "KittenCore::KittenCore"
                BuildableName = "KittenCore.framework"
                BlueprintName = "KittenCore"
+               ReferencedContainer = "container:Backend.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "FluentProvider::FluentProvider"
+               BuildableName = "FluentProvider.framework"
+               BlueprintName = "FluentProvider"
                ReferencedContainer = "container:Backend.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
