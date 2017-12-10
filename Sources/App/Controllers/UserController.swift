@@ -13,7 +13,7 @@ final class UserController {
     func addRoutes(to drop: Droplet) {
         let userGroup = drop.grouped("api", "users")
         userGroup.get(handler: allUsers)
-        userGroup.post("create", handler: createUser)
+        userGroup.post(handler: createUser)
         userGroup.delete(User.parameter, handler: deleteUser)
         userGroup.delete(User.parameter, "messages/deleteAll", handler: deleteUsersMessages)
         userGroup.get(User.parameter, handler: getUser)
