@@ -59,6 +59,12 @@ extension User: JSONConvertible {
 
 extension User: ResponseRepresentable {}
 
+extension User {
+    var messages: Children<User, Message> {
+        return children()
+    }
+}
+
 extension User: NodeRepresentable {
     func makeNode(in context: Context?) throws -> Node {
         var node = Node([:], in: context)
