@@ -22,6 +22,7 @@ extension Config {
     private func setupPreparations() throws {
         preparations.append(User.self)
         preparations.append(Message.self)
+        preparations.append(UserKey.self)
     }
 
 }

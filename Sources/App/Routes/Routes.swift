@@ -7,8 +7,8 @@ extension Droplet {
         
         let userController = UserController()
         userController.addRoutes(to: self)
-        /*
-        let postController = PostController()
-        resource("posts", postController)*/
+        
+        let userKeyController = UserKeyController()
+        userKeyController.addRoutes(to: self)
     }
 }
