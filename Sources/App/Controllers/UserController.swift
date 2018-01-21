@@ -21,10 +21,7 @@ final class UserController {
     }
     
     func createUser(_ req: Request) throws -> ResponseRepresentable {
-        guard let public_id = req.data["public_id"]?.string else {
-            throw Abort.badRequest
-        }
-        let user = try User(public_id: public_id)
+        let user = try User()
         try user.save()
         return user
     }
