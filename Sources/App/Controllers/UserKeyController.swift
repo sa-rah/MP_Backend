@@ -21,7 +21,10 @@ final class UserKeyController {
         guard let public_key = req.data["public_key"]?.string else {
             throw Abort.badRequest
         }
-        let userKey = try UserKey(public_key: public_key)
+        guard let public_id = req.data["public_id"]?.string else {
+            throw Abort.badRequest
+        }
+        let userKey = try UserKey(public_key: public_key, public_id: public_id)
         try userKey.save()
         return userKey
     }

@@ -30,9 +30,11 @@ final class MessageController {
             throw Abort.badRequest
         }
       
-        let user = try User.makeQuery().filter("public_id" == receiver_id).all()
+        guard let user = try User.find(receiver_id) else {
+            throw Abort.notFound
+        }
         
-        let message = try Message(content: content, user: user[0], sender_id: sender_id)
+        let message = try Message(content: content, user: user, sender_id: sender_id)
         try message.save()
         return message
     }
