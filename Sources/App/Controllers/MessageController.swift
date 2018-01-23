@@ -23,6 +23,9 @@ final class MessageController {
         guard let content = req.data["content"]?.string else {
             throw Abort.badRequest
         }
+        guard let signature = req.data["signature"]?.string else {
+            throw Abort.badRequest
+        }
         guard let sender_id = req.data["sender_id"]?.string else {
             throw Abort.badRequest
         }
@@ -34,7 +37,7 @@ final class MessageController {
             throw Abort.notFound
         }
         
-        let message = try Message(content: content, user: user, sender_id: sender_id)
+        let message = try Message(content: content, signature: signature, user: user, sender_id: sender_id)
         try message.save()
         return message
     }
