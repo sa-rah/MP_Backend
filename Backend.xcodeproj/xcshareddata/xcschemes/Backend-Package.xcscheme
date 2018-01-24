@@ -210,6 +210,48 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "AuthProvider::AuthProvider"
+               BuildableName = "AuthProvider.framework"
+               BlueprintName = "AuthProvider"
+               ReferencedContainer = "container:Backend.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "Auth::Authorization"
+               BuildableName = "Authorization.framework"
+               BlueprintName = "Authorization"
+               ReferencedContainer = "container:Backend.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "Auth::Authentication"
+               BuildableName = "Authentication.framework"
+               BlueprintName = "Authentication"
+               ReferencedContainer = "container:Backend.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "FluentProvider::FluentProvider"
                BuildableName = "FluentProvider.framework"
                BlueprintName = "FluentProvider"

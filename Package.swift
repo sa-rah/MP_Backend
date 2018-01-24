@@ -11,10 +11,11 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/vapor/vapor.git", .upToNextMajor(from: "2.1.0")),
         .package(url: "https://github.com/vapor/fluent-provider.git", .upToNextMajor(from: "1.2.0")),
+        .package(url: "https://github.com/vapor/auth-provider.git", .upToNextMajor(from: "1.0.0")),
         .package(url: "https://github.com/vapor/mongo-provider.git", .upToNextMajor(from: "2.0.0"))
     ],
     targets: [
-        .target(name: "App", dependencies: ["Vapor", "FluentProvider","MongoProvider"],
+        .target(name: "App", dependencies: ["Vapor", "FluentProvider", "AuthProvider","MongoProvider"],
                 exclude: [
                     "Config",
                     "Public",

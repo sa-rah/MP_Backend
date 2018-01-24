@@ -1,12 +1,11 @@
 //
-//  Post.swift
+//  Message.swift
 //  BackendPackageDescription
 //
 //  Created by Sarah Sauseng on 30.11.17.
 //
 
 import FluentProvider
-import Foundation
 
 final class Message: Model {
     let storage = Storage()

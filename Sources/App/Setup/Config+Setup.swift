@@ -1,4 +1,5 @@
 import FluentProvider
+import AuthProvider
 import MongoProvider
 
 extension Config {
@@ -14,6 +15,7 @@ extension Config {
     /// Configure providers
     private func setupProviders() throws {
         try addProvider(FluentProvider.Provider.self)
+        try addProvider(AuthProvider.Provider.self)
         try addProvider(MongoProvider.Provider.self)
     }
     
@@ -21,8 +23,8 @@ extension Config {
     /// schemas prepared before the app boots
     private func setupPreparations() throws {
         preparations.append(User.self)
+        preparations.append(Token.self)
         preparations.append(Message.self)
-        preparations.append(UserKey.self)
     }
 
 }

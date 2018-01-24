@@ -6,6 +6,7 @@
 //
 
 import FluentProvider
+import AuthProvider
 
 final class User: Model {
     let storage = Storage()
@@ -22,6 +23,12 @@ final class User: Model {
         var row = Row()
         return row
     }
+}
+
+extension User: TokenAuthenticatable {
+    // the token model that should be queried
+    // to authenticate this user
+    public typealias TokenType = Token
 }
 
 extension User: Preparation {
@@ -52,6 +59,9 @@ extension User: ResponseRepresentable {}
 
 extension User {
     var messages: Children<User, Message> {
+        return children()
+    }
+    var token: Children<User, Token> {
         return children()
     }
 }
