@@ -11,7 +11,7 @@ import FluentProvider
 final class MessageController {
     
     func addRoutes(to auth: RouteBuilder) {
-        let messageGroup = auth.grouped("api", "messages")
+        let messageGroup = auth.grouped("api", "message")
         // messageGroup.get(handler: allMessages)
         messageGroup.post(handler: createMessage)
         messageGroup.delete(Message.parameter, handler: deleteMessage)

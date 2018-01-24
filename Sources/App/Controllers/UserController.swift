@@ -13,8 +13,8 @@ import JSON
 final class UserController {
     
     func addRoutes(to auth: RouteBuilder, drop: Droplet) {
-        drop.post("api/users", handler: createUser)
-        let userGroup = auth.grouped("api", "users")
+        drop.post("api/user", handler: createUser)
+        let userGroup = auth.grouped("api", "user")
        // userGroup.get(handler: allUsers)
         userGroup.delete(User.parameter, handler: deleteUser)
         userGroup.delete(User.parameter, "messages/deleteAll", handler: deleteUsersMessages)
@@ -23,7 +23,17 @@ final class UserController {
     }
     
     func createUser(_ req: Request) throws -> ResponseRepresentable {
-        let user = try User()
+        guard let device_info = req.data["device_info"]?.string else {
+            throw Abort.badRequest
+        }
+        guard let push_token = req.data["push_token"]?.string else {
+            throw Abort.badRequest
+        }
+        guard let public_key = req.data["public_key"]?.string else {
+            throw Abort.badRequest
+        }
+        
+        let user = try User(device_info: device_info, push_token: push_token, public_key: public_key)
         try user.save()
         
         let tok = try Token(user: user)

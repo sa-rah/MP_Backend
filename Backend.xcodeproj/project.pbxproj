@@ -160,12 +160,9 @@
 		OBJ_1365 /* PathIndexable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Node::PathIndexable::Product" /* PathIndexable.framework */; };
 		OBJ_1418 /* MessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* MessageController.swift */; };
 		OBJ_1419 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* UserController.swift */; };
-		OBJ_1420 /* UserKeyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* UserKeyController.swift */; };
-		OBJ_1421 /* TokenAuthMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* TokenAuthMiddleware.swift */; };
 		OBJ_1422 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* Message.swift */; };
 		OBJ_1423 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* Token.swift */; };
 		OBJ_1424 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* User.swift */; };
-		OBJ_1425 /* UserKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_19 /* UserKey.swift */; };
 		OBJ_1426 /* Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* Routes.swift */; };
 		OBJ_1427 /* Config+Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_23 /* Config+Setup.swift */; };
 		OBJ_1428 /* Droplet+Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_24 /* Droplet+Setup.swift */; };
@@ -5227,7 +5224,6 @@
 		OBJ_117 /* ClientSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientSettings.swift; sourceTree = "<group>"; };
 		OBJ_118 /* SSLSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSLSettings.swift; sourceTree = "<group>"; };
 		OBJ_119 /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
-		OBJ_12 /* UserKeyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserKeyController.swift; sourceTree = "<group>"; };
 		OBJ_121 /* Connection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		OBJ_122 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = "/Users/sarahsauseng/MP_Backend/.build/checkouts/MongoKitten.git--6244548337864045047/Package.swift"; sourceTree = "<group>"; };
 		OBJ_124 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = "/Users/sarahsauseng/MP_Backend/.build/checkouts/Schrodinger.git-3746374058425452560/Package.swift"; sourceTree = "<group>"; };
@@ -5243,7 +5239,6 @@
 		OBJ_136 /* SHA2_64Base.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHA2_64Base.swift; sourceTree = "<group>"; };
 		OBJ_137 /* SHA2_64Implementations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHA2_64Implementations.swift; sourceTree = "<group>"; };
 		OBJ_138 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = "/Users/sarahsauseng/MP_Backend/.build/checkouts/CryptoKitten.git--986575072100638837/Package.swift"; sourceTree = "<group>"; };
-		OBJ_14 /* TokenAuthMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenAuthMiddleware.swift; sourceTree = "<group>"; };
 		OBJ_140 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = "/Users/sarahsauseng/MP_Backend/.build/checkouts/Cheetah.git-9055844829175592006/Package.swift"; sourceTree = "<group>"; };
 		OBJ_141 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		OBJ_142 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
@@ -5289,7 +5284,6 @@
 		OBJ_184 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = "/Users/sarahsauseng/MP_Backend/.build/checkouts/auth-provider.git-2099911502650186246/Package.swift"; sourceTree = "<group>"; };
 		OBJ_188 /* Authenticatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticatable.swift; sourceTree = "<group>"; };
 		OBJ_189 /* PasswordAuthenticatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordAuthenticatable.swift; sourceTree = "<group>"; };
-		OBJ_19 /* UserKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserKey.swift; sourceTree = "<group>"; };
 		OBJ_190 /* TokenAuthenticatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenAuthenticatable.swift; sourceTree = "<group>"; };
 		OBJ_191 /* AuthenticationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationError.swift; sourceTree = "<group>"; };
 		OBJ_193 /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
@@ -6931,14 +6925,6 @@
 			path = ".build/checkouts/CryptoKitten.git--986575072100638837/Sources/CryptoKitten";
 			sourceTree = SOURCE_ROOT;
 		};
-		OBJ_13 /* Middleware */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_14 /* TokenAuthMiddleware.swift */,
-			);
-			path = Middleware;
-			sourceTree = "<group>";
-		};
 		OBJ_139 /* Cheetah 1.0.3 */ = {
 			isa = PBXGroup;
 			children = (
@@ -6994,7 +6980,6 @@
 				OBJ_16 /* Message.swift */,
 				OBJ_17 /* Token.swift */,
 				OBJ_18 /* User.swift */,
-				OBJ_19 /* UserKey.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -8002,7 +7987,7 @@
 			path = ".build/checkouts/routing.git-5366657101075133678/Sources/Branches";
 			sourceTree = SOURCE_ROOT;
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -8013,7 +7998,6 @@
 				OBJ_34 /* Dependencies */,
 				OBJ_933 /* Products */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_501 /* Routing */ = {
@@ -8939,7 +8923,6 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_9 /* Controllers */,
-				OBJ_13 /* Middleware */,
 				OBJ_15 /* Models */,
 				OBJ_20 /* Routes */,
 				OBJ_22 /* Setup */,
@@ -9238,7 +9221,6 @@
 			children = (
 				OBJ_10 /* MessageController.swift */,
 				OBJ_11 /* UserController.swift */,
-				OBJ_12 /* UserKeyController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -11130,7 +11112,7 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_933 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -11461,12 +11443,9 @@
 			files = (
 				OBJ_1418 /* MessageController.swift in Sources */,
 				OBJ_1419 /* UserController.swift in Sources */,
-				OBJ_1420 /* UserKeyController.swift in Sources */,
-				OBJ_1421 /* TokenAuthMiddleware.swift in Sources */,
 				OBJ_1422 /* Message.swift in Sources */,
 				OBJ_1423 /* Token.swift in Sources */,
 				OBJ_1424 /* User.swift in Sources */,
-				OBJ_1425 /* UserKey.swift in Sources */,
 				OBJ_1426 /* Routes.swift in Sources */,
 				OBJ_1427 /* Config+Setup.swift in Sources */,
 				OBJ_1428 /* Droplet+Setup.swift in Sources */,
