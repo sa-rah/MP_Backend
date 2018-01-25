@@ -5,18 +5,21 @@
 //  Created by Sarah Sauseng on 30.11.17.
 //
 
-import Vapor
 import FluentProvider
+import VaporAPNS
 
 final class MessageController {
     
+    let apns: VaporAPNS
+    
+    init(apns: VaporAPNS) {
+        self.apns = apns
+    }
+    
     func addRoutes(to auth: RouteBuilder) {
         let messageGroup = auth.grouped("api", "message")
-        // messageGroup.get(handler: allMessages)
         messageGroup.post(handler: createMessage)
         messageGroup.delete(Message.parameter, handler: deleteMessage)
-        messageGroup.get(Message.parameter, "user", handler: getMessageUser)
-        messageGroup.get(Message.parameter, handler: getMessage)
     }
     
     func createMessage(_ req: Request) throws -> ResponseRepresentable {
@@ -41,34 +44,23 @@ final class MessageController {
         
         let message = try Message(content: content, signature: signature, user: user, sender_id: sender_id)
         try message.save()
+        
+        sendPushNotification(user: user, message: message)
+        
         return message
     }
-    /*
-    func allMessages(_ req: Request) throws -> ResponseRepresentable {
-        let messages = try Message.all()
-        return try messages.makeJSON()
+    
+    func sendPushNotification(user: User, message: Message) {
+        let payload = Payload(title: message.sender_id, body: message.content)
+        let pushMessage = ApplePushMessage(priority: .immediately, payload: payload)
+        let result = apns.send(pushMessage, to: user.push_token)
     }
-    */
+
     func deleteMessage(_ req: Request) throws -> ResponseRepresentable {
         let user = try req.auth.assertAuthenticated(User.self)
         let message = try req.parameters.next(Message.self)
         try message.delete()
         return message
-    }
-    
-    func getMessage(_ req: Request) throws -> ResponseRepresentable {
-        let user = try req.auth.assertAuthenticated(User.self)
-        let message = try req.parameters.next(Message.self)
-        return message
-    }
-    
-    func getMessageUser(_ req: Request) throws -> ResponseRepresentable {
-        let userCredential = try req.auth.assertAuthenticated(User.self)
-        let msg = try req.parameters.next(Message.self)
-        guard let user = try msg.user.get() else {
-            throw Abort.notFound
-        }
-        return user
     }
     
 }

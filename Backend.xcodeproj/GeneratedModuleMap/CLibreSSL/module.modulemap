@@ -1,4 +1,4 @@
 module CLibreSSL {
-    umbrella header "/Users/sarahsauseng/Documents/MASTER_PROJECT/Backend/.build/checkouts/clibressl.git-4924093653370840509/Sources/CLibreSSL/include/CLibreSSL.h"
+    umbrella header "/Users/sarahsauseng/MP_Backend/.build/checkouts/clibressl.git-4924093653370840509/Sources/CLibreSSL/include/CLibreSSL.h"
     export *
 }
