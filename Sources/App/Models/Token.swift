@@ -10,7 +10,7 @@ import FluentProvider
 
 final class Token: Model {
     let storage = Storage()
-    let token: String
+    var token: String
     let user_id: Identifier?
     
     struct Properties {
@@ -20,8 +20,9 @@ final class Token: Model {
     }
     
     init(user: User) {
-        self.token = UUID().uuidString
+        self.token = ""
         self.user_id = user.id
+        generateToken()
     }
     
     init(row: Row) throws {
@@ -34,6 +35,18 @@ final class Token: Model {
         try row.set(Properties.token, token)
         try row.set(User.foreignIdKey, user_id)
         return row
+    }
+    
+    func generateToken() {
+        let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
+        var token = ""
+        
+        for _ in 0...40 {
+            let random = Int(arc4random_uniform(UInt32(letters.characters.count)))
+            token += String(letters[letters.index(letters.startIndex, offsetBy: random)])
+        }
+        
+        self.token = token
     }
 }
 
