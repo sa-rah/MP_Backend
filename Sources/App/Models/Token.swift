@@ -20,9 +20,9 @@ final class Token: Model {
     }
     
     init(user: User) {
-        self.token = ""
+        self.token = UUID().uuidString
         self.user_id = user.id
-        generateToken()
+       // generateToken()
     }
     
     init(row: Row) throws {
@@ -36,7 +36,7 @@ final class Token: Model {
         try row.set(User.foreignIdKey, user_id)
         return row
     }
-    
+    /*
     func generateToken() {
         let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
         var token = ""
@@ -47,7 +47,7 @@ final class Token: Model {
         }
         
         self.token = token
-    }
+    }*/
 }
 
 extension Token {
