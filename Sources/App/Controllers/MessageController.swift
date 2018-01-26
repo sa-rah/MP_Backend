@@ -61,6 +61,18 @@ final class MessageController {
         let payload = Payload(title: message.sender_id, body: message.content)
         let pushMessage = ApplePushMessage(priority: .immediately, payload: payload)
         let result = apns.send(pushMessage, to: user.push_token)
+        
+        switch result {
+        case .success(let messageID, _, _):
+            response["feedback"] = "Successfully sent a push notification"
+            break
+        case .error(_, _, let error):
+            log.error("Could not send push notification (\(error))")
+            throw Abort.notFound
+        case .networkError(let error):
+            log.error("Could not send push notification (\(error))")
+            throw Abort.notFound
+        }
     }
 
     func deleteMessage(_ req: Request) throws -> ResponseRepresentable {
