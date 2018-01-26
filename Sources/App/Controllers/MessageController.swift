@@ -19,6 +19,7 @@ final class MessageController {
     func addRoutes(to auth: RouteBuilder) {
         let messageGroup = auth.grouped("api", "message")
         messageGroup.post(handler: createMessage)
+        messageGroup.get(Message.parameter, handler: getMessage)
         messageGroup.delete(Message.parameter, handler: deleteMessage)
     }
     
@@ -47,6 +48,12 @@ final class MessageController {
         
         sendPushNotification(user: user, message: message)
         
+        return message
+    }
+    
+    func getMessage(_ req: Request) throws -> ResponseRepresentable {
+        let user = try req.auth.assertAuthenticated(User.self)
+        let message = try req.parameters.next(Message.self)
         return message
     }
     

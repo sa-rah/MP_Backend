@@ -12,11 +12,11 @@ import JSON
 final class UserController {
     
     func addRoutes(to auth: RouteBuilder, drop: Droplet) {
-        drop.post("api/createUser", handler: createUser)
+        drop.post("api/user", handler: createUser)
         let userGroup = auth.grouped("api", "user")
         userGroup.delete(User.parameter, handler: deleteUser)
-        userGroup.get(User.parameter, "messages", handler: getUsersMessages)
-        userGroup.delete(User.parameter, "messages/deleteAll", handler: deleteUsersMessages)
+        userGroup.get(User.parameter, "messages", handler: getUserMessages)
+        userGroup.delete(User.parameter, "messages", handler: deleteUserMessages)
     }
     
     func createUser(_ req: Request) throws -> ResponseRepresentable {
@@ -45,12 +45,16 @@ final class UserController {
         return user
     }
     
-    func getUsersMessages(_ req: Request) throws -> ResponseRepresentable {
+    func getUserMessages(_ req: Request) throws -> ResponseRepresentable {
         let user = try req.auth.assertAuthenticated(User.self)
-        return try user.messages.all().makeJSON()
+        let messages = try user.messages.all().makeJSON()
+        
+        try deleteUserMessages(req)
+        
+        return messages
     }
     
-    func deleteUsersMessages(_ req: Request) throws -> ResponseRepresentable {
+    func deleteUserMessages(_ req: Request) throws -> ResponseRepresentable {
         let user = try req.auth.assertAuthenticated(User.self) 
         let messages = try Message.makeQuery().filter("user__id" == user.id).all()
         

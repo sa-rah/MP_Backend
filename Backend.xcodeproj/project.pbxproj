@@ -6103,6 +6103,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		07759B10201B36AD00E982AE /* AuthKey_4MJB8T438X.p8 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AuthKey_4MJB8T438X.p8; sourceTree = "<group>"; };
 		"Auth::Authentication::Product" /* Authentication.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Authentication.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Auth::Authorization::Product" /* Authorization.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Authorization.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"AuthProvider::AuthProvider::Product" /* AuthProvider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AuthProvider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -8576,6 +8577,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		07759B0B201B330D00E982AE /* Certs */ = {
+			isa = PBXGroup;
+			children = (
+				07759B10201B36AD00E982AE /* AuthKey_4MJB8T438X.p8 */,
+			);
+			path = Certs;
+			sourceTree = "<group>";
+		};
 		OBJ_1003 /* Query */ = {
 			isa = PBXGroup;
 			children = (
@@ -10393,6 +10402,7 @@
 		OBJ_18 /* Setup */ = {
 			isa = PBXGroup;
 			children = (
+				07759B0B201B330D00E982AE /* Certs */,
 				OBJ_19 /* Config+Setup.swift */,
 				OBJ_20 /* Droplet+Setup.swift */,
 			);
@@ -10538,7 +10548,7 @@
 			path = Claims;
 			sourceTree = "<group>";
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -10549,7 +10559,6 @@
 				OBJ_30 /* Dependencies */,
 				OBJ_1674 /* Products */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_58 /* Headers */ = {
@@ -13831,7 +13840,7 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_1674 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";

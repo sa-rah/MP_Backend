@@ -13,7 +13,7 @@ final class Message: Model {
     let signature: String
     let receiver_id: Identifier?
     let sender_id: String
-    let date_sent: Date
+    let date_sent: Double
     
     struct Properties {
         static let id = "id"
@@ -29,7 +29,7 @@ final class Message: Model {
         self.signature = signature
         self.receiver_id = user.id
         self.sender_id = sender_id
-        self.date_sent = Date()
+        self.date_sent = Date().timeIntervalSince1970
     }
     
     init(row: Row) throws {

@@ -7,7 +7,7 @@ import VaporAPNS
 extension Droplet {
     
     public func setup() throws {
-        guard
+       guard
             let teamIdentifier = config["apns", "teamIdentifier"]?.string,
             let APNSAuthKeyID = config["apns", "APNSAuthKeyID"]?.string,
             let APNSAuthKeyPath = config["apns", "APNSAuthKeyPath"]?.string,
