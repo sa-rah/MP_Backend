@@ -46,7 +46,7 @@ final class MessageController {
         let message = try Message(content: content, signature: signature, user: user, sender_id: sender_id)
         try message.save()
         
-        sendPushNotification(user: user, message: message)
+        try sendPushNotification(user: user, message: message)
         
         return message
     }
@@ -57,20 +57,20 @@ final class MessageController {
         return message
     }
     
-    func sendPushNotification(user: User, message: Message) {
+    func sendPushNotification(user: User, message: Message) throws {
         let payload = Payload(title: message.sender_id, body: message.content)
         let pushMessage = ApplePushMessage(priority: .immediately, payload: payload)
         let result = apns.send(pushMessage, to: user.push_token)
         
         switch result {
         case .success(let messageID, _, _):
-            response["feedback"] = "Successfully sent a push notification"
+            print("Successfully sent a push notification")
             break
         case .error(_, _, let error):
-            log.error("Could not send push notification (\(error))")
+            print("Could not send push notification (\(error))")
             throw Abort.notFound
         case .networkError(let error):
-            log.error("Could not send push notification (\(error))")
+            print("Could not send push notification (\(error))")
             throw Abort.notFound
         }
     }
