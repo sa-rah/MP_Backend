@@ -48,7 +48,10 @@ final class MessageController {
         
         try sendPushNotification(user: user, message: message)
         
-        return message
+        var json = JSON()
+        try json.set("success", true)
+        
+        return json
     }
     
     func getMessage(_ req: Request) throws -> ResponseRepresentable {
@@ -57,7 +60,7 @@ final class MessageController {
         return message
     }
     
-    func sendPushNotification(user: User, message: Message) throws {
+    func sendPushNotification(user: User, message: Message) {
         let payload = Payload(title: message.sender_id, body: message.content)
         let pushMessage = ApplePushMessage(priority: .immediately, payload: payload)
         let result = apns.send(pushMessage, to: user.push_token)
@@ -68,10 +71,10 @@ final class MessageController {
             break
         case .error(_, _, let error):
             print("Could not send push notification (\(error))")
-            throw Abort.notFound
+            break
         case .networkError(let error):
             print("Could not send push notification (\(error))")
-            throw Abort.notFound
+            break
         }
     }
 
