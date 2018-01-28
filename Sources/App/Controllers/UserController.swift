@@ -14,6 +14,7 @@ final class UserController {
     func addRoutes(to auth: RouteBuilder, drop: Droplet) {
         drop.post("api/user", handler: createUser)
         let userGroup = auth.grouped("api", "user")
+        userGroup.put(User.parameter, handler: updateUser)
         userGroup.get(User.parameter, ":user_id", handler: getUserKey)
         userGroup.delete(User.parameter, handler: deleteUser)
         userGroup.get(User.parameter, "messages", handler: getUserMessages)
@@ -41,7 +42,7 @@ final class UserController {
     }
     
     func getUserKey(_ req: Request) throws -> ResponseRepresentable {
-         let userAuth = try req.auth.assertAuthenticated(User.self)
+        let userAuth = try req.auth.assertAuthenticated(User.self)
         
         let user_id =  req.parameters["user_id"]?.string
         guard let user = try User.find(user_id) else {
@@ -50,6 +51,22 @@ final class UserController {
         
         var json = JSON()
         try json.set("public_key", user.public_key)
+        
+        return json
+    }
+    
+    func updateUser(_ req: Request) throws -> ResponseRepresentable {
+        let userAuth = try req.auth.assertAuthenticated(User.self)
+        
+        guard let push_token = req.data["push_token"]?.string else {
+            throw Abort.badRequest
+        }
+        
+        userAuth.push_token = push_token
+        try userAuth.save()
+        
+        var json = JSON()
+        try json.set("success", true)
         
         return json
     }
@@ -77,7 +94,10 @@ final class UserController {
             try msg.delete()
         }
         
-        return "Successfully deleted messages"
+        var json = JSON()
+        try json.set("success", true)
+        
+        return json
     }
     
 }

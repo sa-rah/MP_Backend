@@ -10,9 +10,9 @@ import AuthProvider
 
 final class User: Model {
     let storage = Storage()
-    let device_info: String
-    let push_token: String
-    let public_key: String
+    var device_info: String
+    var push_token: String
+    var public_key: String
     
     struct Properties {
         static let id = "id"
