@@ -62,7 +62,7 @@ final class MessageController {
     
     func sendPushNotification(user: User, message: Message) {
         print("sending notification")
-        let payload = Payload(title: message.sender_id, body: "You've received a new message!")
+        let payload = Payload(title: "New message", body: "You've received a new message!")
         let pushMessage = ApplePushMessage(priority: .immediately, payload: payload)
         let result = apns.send(pushMessage, to: user.push_token)
         
