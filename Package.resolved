@@ -195,8 +195,8 @@
         "repositoryURL": "https://github.com/OpenKitten/MongoKitten.git",
         "state": {
           "branch": null,
-          "revision": "611b2b396d558cbe82b97c599bbc748c06611741",
-          "version": "4.0.16"
+          "revision": "6bb829b48f277815313b44263a48a43b5db14f09",
+          "version": "4.0.17"
         }
       },
       {
@@ -213,8 +213,8 @@
         "repositoryURL": "https://github.com/vapor/multipart.git",
         "state": {
           "branch": null,
-          "revision": "8e541b2e6fc64a3741eca2aa48ee2c3f23cbe17c",
-          "version": "2.1.1"
+          "revision": "17c2bf072ae1698aa7d6c96472ff9b4a970c1816",
+          "version": "2.2.0"
         }
       },
       {

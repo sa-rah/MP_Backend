@@ -92,7 +92,7 @@ final class MessageController {
         }*/
     
         let headerKey = HeaderKey("Content-Type")
-        return  Response(status: .ok, headers: [headerKey: "image/png"], body: body)
+        return  Response(status: .ok, headers: [headerKey: "image/png"], body: message.attachment)
     }
     
     func deleteMessage(_ req: Request) throws -> ResponseRepresentable {
