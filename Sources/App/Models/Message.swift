@@ -6,10 +6,12 @@
 //
 
 import FluentProvider
+import MongoKitten
 
 final class Message: Model {
     let storage = Storage()
     let content: String
+    let attachment: String //ObjectId?
     let signature: String
     let receiver_id: Identifier?
     let sender_id: String
@@ -18,14 +20,16 @@ final class Message: Model {
     struct Properties {
         static let id = "id"
         static let content = "content"
+        static let attachment = "attachment"
         static let signature = "signature"
         static let receiver_id = "receiver_id"
         static let sender_id = "sender_id"
         static let date_sent = "date_sent"
     }
     
-    init(content: String, signature: String, user: User, sender_id: String) {
+    init(content: String, attachment: String, signature: String, user: User, sender_id: String) {
         self.content = content
+        self.attachment = attachment
         self.signature = signature
         self.receiver_id = user.id
         self.sender_id = sender_id
@@ -34,6 +38,7 @@ final class Message: Model {
     
     init(row: Row) throws {
         content = try row.get(Properties.content)
+        attachment = try row.get(Properties.attachment)
         signature = try row.get(Properties.signature)
         sender_id = try row.get(Properties.sender_id)
         date_sent = try row.get(Properties.date_sent)
@@ -43,6 +48,7 @@ final class Message: Model {
     func makeRow() throws -> Row {
         var row = Row()
         try row.set(Properties.content, content)
+        try row.set(Properties.attachment, attachment)
         try row.set(Properties.signature, signature)
         try row.set(Properties.sender_id, sender_id)
         try row.set(Properties.date_sent, date_sent)
@@ -52,10 +58,11 @@ final class Message: Model {
 }
 
 extension Message: Preparation {
-    static func prepare(_ database: Database) throws {
+    static func prepare(_ database: Fluent.Database) throws {
         try database.create(self) { builder in
             builder.id()
             builder.string(Properties.content)
+            builder.string(Properties.attachment)
             builder.string(Properties.signature)
             builder.string(Properties.sender_id)
             builder.string(Properties.date_sent)
@@ -63,7 +70,7 @@ extension Message: Preparation {
         }
     }
     
-    static func revert(_ database: Database) throws {
+    static func revert(_ database: Fluent.Database) throws {
         try database.delete(self)
     }
 }
@@ -74,13 +81,14 @@ extension Message: JSONConvertible {
         guard let user = try User.find(receiver_id) else {
             throw Abort.badRequest
         }
-        try self.init(content: json.get(Properties.content), signature: json.get(Properties.signature), user: user, sender_id: json.get(Properties.sender_id))
+        try self.init(content: json.get(Properties.content), attachment: json.get(Properties.attachment), signature: json.get(Properties.signature), user: user, sender_id: json.get(Properties.sender_id))
     }
     
     func makeJSON() throws -> JSON {
         var json = JSON()
         try json.set(Properties.id, id)
         try json.set(Properties.content, content)
+        try json.set(Properties.attachment, attachment)
         try json.set(Properties.signature, signature)
         try json.set(Properties.sender_id, sender_id)
         try json.set(Properties.date_sent, date_sent)
@@ -102,6 +110,7 @@ extension Message: NodeRepresentable {
         var node = Node([:], in: context)
         try node.set(Properties.id, id)
         try node.set(Properties.content, content)
+        try node.set(Properties.attachment, attachment)
         try node.set(Properties.signature, signature)
         try node.set(Properties.sender_id, sender_id)
         try node.set(Properties.date_sent, date_sent)

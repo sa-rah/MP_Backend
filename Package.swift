@@ -16,7 +16,7 @@ let package = Package(
         .package(url: "https://github.com/matthijs2704/vapor-apns.git", .upToNextMajor(from: "2.0.0"))
     ],
     targets: [
-        .target(name: "App", dependencies: ["Vapor", "FluentProvider", "AuthProvider","MongoProvider", "VaporAPNS"],
+        .target(name: "App", dependencies: ["Vapor", "FluentProvider", "AuthProvider", "MongoProvider", "VaporAPNS"],
                 exclude: [
                     "Config",
                     "Public",
