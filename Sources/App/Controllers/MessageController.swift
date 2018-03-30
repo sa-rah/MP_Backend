@@ -51,21 +51,25 @@ final class MessageController {
             throw Abort.notFound
         }
         
-        guard let fileData = req.formData?["attachment"]?.part.body else {
-            throw Abort.badRequest
-        }
+        // ---- attach file
         
-        let workPath = drop.config.workDir
-        let fileEnd = (req.formData?["attachment"]?.part.headers[HeaderKey("Content-Disposition")])!.components(separatedBy: ".")[1]
-        let name = UUID().uuidString + "." + fileEnd.substring(to: fileEnd.index(before: fileEnd.endIndex))
-        let fileFolder = "Public/files"
-        let saveURL = URL(fileURLWithPath: workPath).appendingPathComponent(fileFolder, isDirectory: true).appendingPathComponent(name, isDirectory: false)
+        var name = ""
         
-        do {
-            let data = Data(bytes: fileData)
-            try data.write(to: saveURL)
-        } catch {
-             throw Abort.badRequest
+        let fileData = req.formData?["attachment"]?.part.body
+        
+        if let fileData = fileData {
+            let workPath = drop.config.workDir
+            let fileEnd = (req.formData?["attachment"]?.part.headers[HeaderKey("Content-Disposition")])!.components(separatedBy: ".")[1]
+            name = UUID().uuidString + "." + fileEnd.substring(to: fileEnd.index(before: fileEnd.endIndex))
+            let fileFolder = "Public/files"
+            let saveURL = URL(fileURLWithPath: workPath).appendingPathComponent(fileFolder, isDirectory: true).appendingPathComponent(name, isDirectory: false)
+            
+            do {
+                let data = Data(bytes: fileData)
+                try data.write(to: saveURL)
+            } catch {
+                throw Abort.badRequest
+            }
         }
         
         let message = try Message(content: content, attachment: name, signature: signature, user: user, sender_id: sender_id)
