@@ -61,7 +61,7 @@ final class MessageController {
             let workPath = drop.config.workDir
             let fileEnd = (req.formData?["attachment"]?.part.headers[HeaderKey("Content-Disposition")])!.components(separatedBy: ".")[1]
             name = UUID().uuidString + "." + fileEnd.substring(to: fileEnd.index(before: fileEnd.endIndex))
-            let fileFolder = "Public/files"
+            let fileFolder = "Public"
             let saveURL = URL(fileURLWithPath: workPath).appendingPathComponent(fileFolder, isDirectory: true).appendingPathComponent(name, isDirectory: false)
             
             print(workPath)
