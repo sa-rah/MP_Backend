@@ -64,6 +64,9 @@ final class MessageController {
             let fileFolder = "Public/files"
             let saveURL = URL(fileURLWithPath: workPath).appendingPathComponent(fileFolder, isDirectory: true).appendingPathComponent(name, isDirectory: false)
             
+            print(workPath)
+            print(saveURL)
+            
             do {
                 let data = Data(bytes: fileData)
                 try data.write(to: saveURL)
