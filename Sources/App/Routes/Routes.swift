@@ -11,7 +11,5 @@ extension Droplet {
         
         let userController = UserController()
         userController.addRoutes(to: authed, drop: self)
-        
-        // TODO: public files folder should be accessible only to authorized users
     }
 }

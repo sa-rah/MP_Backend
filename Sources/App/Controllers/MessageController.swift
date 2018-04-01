@@ -23,9 +23,10 @@ final class MessageController {
     
     func addRoutes(to auth: RouteBuilder) {
         let messageGroup = auth.grouped("api", "message")
+        let fileGroup = auth.grouped("api", "files")
         messageGroup.post(handler: createMessage)
-        messageGroup.get(Message.parameter, handler: getMessageAttachment)
         messageGroup.delete(Message.parameter, handler: deleteMessage)
+        fileGroup.get(":name", handler: getMessageAttachment)
     }
     
     func createMessage(_ req: Request) throws -> ResponseRepresentable {
@@ -55,21 +56,17 @@ final class MessageController {
         
         var name = ""
         
-        let fileData = req.formData?["attachment"]?.part.body
+        let fileData = req.data["attachment"]?.string
+        //let fileData = req.formData?["attachment"]?.part.body
         
         if let fileData = fileData {
             let workPath = drop.config.workDir
-            let fileEnd = (req.formData?["attachment"]?.part.headers[HeaderKey("Content-Disposition")])!.components(separatedBy: ".")[1]
-            name = UUID().uuidString + "." + fileEnd.substring(to: fileEnd.index(before: fileEnd.endIndex))
-            let fileFolder = "Public"
+            name = UUID().uuidString + ".txt"
+            let fileFolder = "Public/files"
             let saveURL = URL(fileURLWithPath: workPath).appendingPathComponent(fileFolder, isDirectory: true).appendingPathComponent(name, isDirectory: false)
             
-            print(workPath)
-            print(saveURL)
-            
             do {
-                let data = Data(bytes: fileData)
-                try data.write(to: saveURL)
+                try fileData.write(to: saveURL, atomically: true, encoding: String.Encoding.utf8)
             } catch {
                 throw Abort.badRequest
             }
@@ -88,18 +85,38 @@ final class MessageController {
     
     func getMessageAttachment(_ req: Request) throws -> ResponseRepresentable {
         let user = try req.auth.assertAuthenticated(User.self)
-        let message = try req.parameters.next(Message.self)
+     
+        guard let name = req.parameters["name"]?.string else {
+            throw Abort.badRequest
+        }
         
-        /*let file: GridFS.File? = try fs.findOne(byID: message.attachment!)
+        let workPath = drop.config.workDir
+        let fileFolder = "Public/files"
+        let readURL = URL(fileURLWithPath: workPath).appendingPathComponent(fileFolder, isDirectory: true).appendingPathComponent(name, isDirectory: false)
         
-        var attachment = Array<Bytes>()
+        var fileData = Data()
         
-        for chunk in file! {
-            attachment.append(chunk.data)
-        }*/
-    
-        let headerKey = HeaderKey("Content-Type")
-        return  Response(status: .ok, headers: [headerKey: "image/png"], body: message.attachment)
+        do {
+           fileData = try Data(contentsOf: readURL)
+        } catch {
+            throw Abort.badRequest
+        }
+        
+        do {
+            let fileManager = FileManager.default
+            
+            if fileManager.fileExists(atPath: readURL.path) {
+                try fileManager.removeItem(atPath: readURL.path)
+            } else {
+                print("File does not exist")
+            }
+            
+        } catch {
+            throw Abort.notFound
+        }
+
+        
+        return fileData
     }
     
     func deleteMessage(_ req: Request) throws -> ResponseRepresentable {
@@ -110,10 +127,6 @@ final class MessageController {
     }
     
     // additional methods
-    
-    func uploadFile() {
-        
-    }
     
     func sendPushNotification(user: User, message: Message) {
         print("sending notification")
