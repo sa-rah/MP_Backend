@@ -115,8 +115,10 @@ final class MessageController {
             throw Abort.notFound
         }
 
+        var json = JSON()
+        try json.set("file", String(data: fileData, encoding: .utf8)!)
         
-        return fileData
+        return json
     }
     
     func deleteMessage(_ req: Request) throws -> ResponseRepresentable {
