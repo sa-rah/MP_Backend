@@ -25,7 +25,6 @@ final class MessageController {
         let messageGroup = auth.grouped("api", "message")
         let fileGroup = auth.grouped("api", "files")
         messageGroup.post(handler: createMessage)
-        messageGroup.delete(Message.parameter, handler: deleteMessage)
         fileGroup.get(":name", handler: getMessageAttachment)
     }
     
@@ -57,7 +56,6 @@ final class MessageController {
         var name = ""
         
         let fileData = req.data["attachment"]?.string
-        //let fileData = req.formData?["attachment"]?.part.body
         
         if let fileData = fileData {
             let workPath = drop.config.workDir

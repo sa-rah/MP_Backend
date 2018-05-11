@@ -18,7 +18,6 @@ final class UserController {
         userGroup.get(User.parameter, ":user_id", handler: getUserKey)
         userGroup.delete(User.parameter, handler: deleteUser)
         userGroup.get(User.parameter, "messages", handler: getUserMessages)
-        userGroup.delete(User.parameter, "messages", handler: deleteUserMessages)
     }
     
     func createUser(_ req: Request) throws -> ResponseRepresentable {

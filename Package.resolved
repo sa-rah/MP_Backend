@@ -29,21 +29,21 @@
         }
       },
       {
-        "package": "BSON",
-        "repositoryURL": "https://github.com/OpenKitten/BSON.git",
-        "state": {
-          "branch": null,
-          "revision": "eb4ff0def92e8a74aa44f9f927ebae5bc3a05f57",
-          "version": "5.1.5"
-        }
-      },
-      {
         "package": "Bits",
         "repositoryURL": "https://github.com/vapor/bits.git",
         "state": {
           "branch": null,
           "revision": "c32f5e6ae2007dccd21a92b7e33eba842dd80d2f",
           "version": "1.1.0"
+        }
+      },
+      {
+        "package": "BSON",
+        "repositoryURL": "https://github.com/OpenKitten/BSON.git",
+        "state": {
+          "branch": null,
+          "revision": "eb4ff0def92e8a74aa44f9f927ebae5bc3a05f57",
+          "version": "5.1.5"
         }
       },
       {
@@ -56,30 +56,21 @@
         }
       },
       {
-        "package": "CLibreSSL",
-        "repositoryURL": "https://github.com/vapor/clibressl.git",
-        "state": {
-          "branch": null,
-          "revision": "23ddb296981d17a8ee6c7418742a40cad5d2f9d0",
-          "version": "1.0.0"
-        }
-      },
-      {
-        "package": "CTLS",
-        "repositoryURL": "https://github.com/vapor/ctls.git",
-        "state": {
-          "branch": null,
-          "revision": "fba1297f4986a4dac8b02f7ac4e84a77fd492e4c",
-          "version": "1.1.3"
-        }
-      },
-      {
         "package": "Cheetah",
         "repositoryURL": "https://github.com/OpenKitten/Cheetah.git",
         "state": {
           "branch": null,
           "revision": "b7e3bf3de9fe487cd5f07ac67d57d8bf730cb0c7",
           "version": "1.0.3"
+        }
+      },
+      {
+        "package": "CLibreSSL",
+        "repositoryURL": "https://github.com/vapor/clibressl.git",
+        "state": {
+          "branch": null,
+          "revision": "23ddb296981d17a8ee6c7418742a40cad5d2f9d0",
+          "version": "1.0.0"
         }
       },
       {
@@ -116,6 +107,15 @@
           "branch": null,
           "revision": "bf7a4d6dbd6f4bbd96ae620101239446d2cdd3f9",
           "version": "0.2.3"
+        }
+      },
+      {
+        "package": "CTLS",
+        "repositoryURL": "https://github.com/vapor/ctls.git",
+        "state": {
+          "branch": null,
+          "revision": "fba1297f4986a4dac8b02f7ac4e84a77fd492e4c",
+          "version": "1.1.3"
         }
       },
       {
@@ -191,15 +191,6 @@
         }
       },
       {
-        "package": "MongoKitten",
-        "repositoryURL": "https://github.com/OpenKitten/MongoKitten.git",
-        "state": {
-          "branch": null,
-          "revision": "6bb829b48f277815313b44263a48a43b5db14f09",
-          "version": "4.0.17"
-        }
-      },
-      {
         "package": "MongoProvider",
         "repositoryURL": "https://github.com/vapor/mongo-provider.git",
         "state": {
@@ -209,12 +200,21 @@
         }
       },
       {
+        "package": "MongoKitten",
+        "repositoryURL": "https://github.com/OpenKitten/MongoKitten.git",
+        "state": {
+          "branch": null,
+          "revision": "7dbfa5b96891588ced8ed98e077a63907eed0de1",
+          "version": "4.0.19"
+        }
+      },
+      {
         "package": "Multipart",
         "repositoryURL": "https://github.com/vapor/multipart.git",
         "state": {
           "branch": null,
-          "revision": "17c2bf072ae1698aa7d6c96472ff9b4a970c1816",
-          "version": "2.2.0"
+          "revision": "1d98ad2205d0620fe2801048f76420572281e6e8",
+          "version": "2.2.1"
         }
       },
       {
@@ -245,15 +245,6 @@
         }
       },
       {
-        "package": "SQLite",
-        "repositoryURL": "https://github.com/vapor/sqlite.git",
-        "state": {
-          "branch": null,
-          "revision": "9aceb6a0d7b1698a557647493bd78b030dad468b",
-          "version": "2.3.1"
-        }
-      },
-      {
         "package": "Schrodinger",
         "repositoryURL": "https://github.com/OpenKitten/Schrodinger.git",
         "state": {
@@ -267,8 +258,17 @@
         "repositoryURL": "https://github.com/vapor/sockets.git",
         "state": {
           "branch": null,
-          "revision": "a77816695630a44d5d1393fc71eac37ac3d082ca",
-          "version": "2.2.2"
+          "revision": "79fc180cdcb451dbbb01b1156be36720adde80e0",
+          "version": "2.2.3"
+        }
+      },
+      {
+        "package": "SQLite",
+        "repositoryURL": "https://github.com/vapor/sqlite.git",
+        "state": {
+          "branch": null,
+          "revision": "9aceb6a0d7b1698a557647493bd78b030dad468b",
+          "version": "2.3.1"
         }
       },
       {
