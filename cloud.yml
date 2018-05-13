@@ -2,6 +2,11 @@ swift_version: "4.0.0"
 
 config:
     deploy:
+        URL: ""
+        TEAM_IDENTIFIER: ""
+        APNS_AUTH_KEY_ID: ""
+        APNS_AUTH_KEY_PATH: ""
+        IDENTIFIER: ""
     all:
         URL: ""
         TEAM_IDENTIFIER: ""
