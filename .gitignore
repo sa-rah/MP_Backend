@@ -1,6 +1,5 @@
 Config/secrets/
 Public/files/
-Sources/App/Setup/Certs/
 *.plist
 
 Packages

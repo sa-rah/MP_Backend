@@ -1,6 +1,6 @@
 {
-    "teamIdentifier": $TEAM_IDENTIFIER,
-    "APNSAuthKeyID": $APNS_AUTH_KEY_ID,
-    "APNSAuthKeyPath": $APNS_AUTH_KEY_PATH,
-    "identifier": $IDENTIFIER
+    "teamIdentifier": "$TEAM_IDENTIFIER",
+    "APNSAuthKeyID": "$APNS_AUTH_KEY_ID",
+    "APNSAuthKeyPath": "$APNS_AUTH_KEY_PATH",
+    "identifier": "$IDENTIFIER"
 }
