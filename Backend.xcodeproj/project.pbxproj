@@ -6102,6 +6102,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		079DCBB420A8A6E000D7189D /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		"Auth::Authentication::Product" /* Authentication.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Authentication.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Auth::Authorization::Product" /* Authorization.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Authorization.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"AuthProvider::AuthProvider::Product" /* AuthProvider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AuthProvider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -10537,9 +10538,10 @@
 			path = Claims;
 			sourceTree = "<group>";
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
+				079DCBB420A8A6E000D7189D /* .gitignore */,
 				OBJ_6 /* Package.swift */,
 				OBJ_7 /* Sources */,
 				OBJ_23 /* Tests */,
@@ -10548,7 +10550,6 @@
 				OBJ_30 /* Dependencies */,
 				OBJ_1674 /* Products */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_58 /* Headers */ = {
@@ -13830,7 +13831,7 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_1674 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
