@@ -13,10 +13,11 @@ let package = Package(
         .package(url: "https://github.com/vapor/fluent-provider.git", .upToNextMajor(from: "1.2.0")),
         .package(url: "https://github.com/vapor/auth-provider.git", .upToNextMajor(from: "1.0.0")),
         .package(url: "https://github.com/vapor/mongo-provider.git", .upToNextMajor(from: "2.0.0")),
-        .package(url: "https://github.com/matthijs2704/vapor-apns.git", .upToNextMajor(from: "2.0.0"))
+        .package(url: "https://github.com/matthijs2704/vapor-apns.git", .upToNextMajor(from: "2.0.0")),
+        .package(url: "https://github.com/BrettRToomey/Jobs.git", .upToNextMajor(from: "1.1.1"))
     ],
     targets: [
-        .target(name: "App", dependencies: ["Vapor", "FluentProvider", "AuthProvider", "MongoProvider", "VaporAPNS"],
+        .target(name: "App", dependencies: ["Vapor", "FluentProvider", "AuthProvider", "MongoProvider", "VaporAPNS", "Jobs"],
                 exclude: [
                     "Config",
                     "Public",

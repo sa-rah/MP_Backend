@@ -11,5 +11,6 @@ extension Droplet {
         
         let userController = UserController()
         userController.addRoutes(to: authed, drop: self)
+        
     }
 }
